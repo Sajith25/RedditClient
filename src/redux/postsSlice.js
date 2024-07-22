@@ -1,4 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchPosts = createAsyncThunk(
+  'posts/fetchPosts',
+  async (subreddit, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
+      const data = await response.json();
+      return data.data.children.map(post => post.data);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -7,26 +20,22 @@ const postsSlice = createSlice({
     isLoading: false,
     error: null
   },
-  reducers: {
-    fetchPostsStart(state) {
-      state.isLoading = true;
-      state.error = null;
-    },
-    fetchPostsSuccess(state, action) {
-      state.isLoading = false;
-      state.posts = action.payload;
-    },
-    fetchPostsFailure(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPosts.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.posts = action.payload;
+      })
+      .addCase(fetchPosts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   }
 });
-
-export const {
-  fetchPostsStart,
-  fetchPostsSuccess,
-  fetchPostsFailure
-} = postsSlice.actions;
 
 export default postsSlice.reducer;

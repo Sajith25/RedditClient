@@ -1,0 +1,138 @@
+/* Winter theme colors */
+:root {
+  --background-color: #e0f7fa; /* Light Cyan */
+  --header-background-color: #0e001f; /* Deep Purple */
+  --header-text-color: #ffffff; /* White */
+  --post-background-color: #ffffff; /* White */
+  --text-color: #333333; /* Dark Gray */
+  --link-color: #1e88e5; /* Blue */
+  --border-color: #dcdcdc; /* Gainsboro */
+  --vote-color: #4a148c; /* Deep Purple */
+  --timestamp-color: #666666; /* Gray */
+}
+
+/* Body styling */
+body {
+  background-image:url('./980842.jpg') ;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+}
+
+/* Header styling */
+.header {
+  text-align: center;
+  padding: 5px;
+  background-color: var(--header-background-color);
+  background-image: url('./31d1a01ce2ef51301680fd1194b6a6ce.jpg');
+  color: var(--header-text-color);
+  border-bottom: 4px solid var(--link-color);
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px ;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 200px;
+}
+
+.search-button {
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--link-color);
+  color: white;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: darken(var(--link-color), 10%);
+}
+
+/* Styling for posts container */
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Individual post styling */
+.post {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  background-color: var(--post-background-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
+.post-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+  color: var(--vote-color);
+}
+
+.vote-count {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.post-title:hover {
+  text-decoration: underline;
+}
+
+.post-image, .post-video {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--timestamp-color);
+}
+
+.post-author {
+  color: var(--link-color);
+}
+
+.post-timestamp {
+  margin-left: 10px;
+}
+
+.post-comments {
+  margin-left: auto;
+}
